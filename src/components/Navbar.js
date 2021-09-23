@@ -1,28 +1,96 @@
 import React, {useState} from "react";
-import Nav from 'react-bootstrap/Nav'
-import { Link } from "react-router-dom";
-import clrswy from "../assets/cw.jpeg"
+import AppBar from '@mui/material/AppBar';
+import Box from '@mui/material/Box';
+import Toolbar from '@mui/material/Toolbar';
+import Typography from '@mui/material/Typography';
+import IconButton from '@mui/material/IconButton';
+import MenuIcon from '@mui/icons-material/Menu';
+import AccountCircle from '@mui/icons-material/AccountCircle';
+import Switch from '@mui/material/Switch';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import FormGroup from '@mui/material/FormGroup';
+import MenuItem from '@mui/material/MenuItem';
+import Menu from '@mui/material/Menu';
 
 
-const Navbar =()=> {
-    const [isOpen, setIsOpen] = useState(true)
+
+export default function Navbar() {
+    const [auth, setAuth] = React.useState(true);
+    const [anchorEl, setAnchorEl] = React.useState(null);
+  
+    const handleChange = (event) => {
+      setAuth(event.target.checked);
+    };
+  
+    const handleMenu = (event) => {
+      setAnchorEl(event.currentTarget);
+    };
+  
+    const handleClose = () => {
+      setAnchorEl(null);
+    };
+  
     return (
-        <Nav className="d-flex justify-content-between bg-info p-4 ">
-            <Link to="/">
-                <img src={clrswy} style={{width:"40px"}}></img>
-            </Link>
-            <Link to="/">
-            ──── <i>{"<Rifat/>"}</i><span>Blog</span> ──── 
-            </Link>
-            {isOpen ? <Link onClick={()=>setIsOpen(!isOpen)} >
-                <i className="fas fa-user-tie"></i>
-            </Link> :
-            <Link className=" " onClick={()=>setIsOpen(!isOpen)}> 
-                <li to="/">Login</li>
-                <li to="/">Register</li>
-            </Link>
-    }
-</Nav>
-    )
-};
-export default Navbar ;
+      <Box sx={{ flexGrow: 1 }}>
+        <AppBar position="static">
+          <Toolbar>
+            <IconButton
+              size="large"
+              edge="start"
+              color="inherit"
+              aria-label="menu"
+              sx={{ mr: 2 }}
+            >
+            </IconButton>
+            <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+              Rifat's Blog
+            </Typography>
+            <FormGroup>
+          <FormControlLabel
+            control={
+              <Switch
+                checked={auth}
+                onChange={handleChange}
+                aria-label="login switch"
+              />
+            }
+            label={auth ? 'Logout' : 'Login'}
+          />
+        </FormGroup>
+            {auth && (
+              <div>
+                <IconButton
+                  size="large"
+                  aria-label="account of current user"
+                  aria-controls="menu-appbar"
+                  aria-haspopup="true"
+                  onClick={handleMenu}
+                  color="inherit"
+                >
+                  <AccountCircle />
+                </IconButton>
+                <Menu
+                  id="menu-appbar"
+                  anchorEl={anchorEl}
+                  anchorOrigin={{
+                    vertical: 'top',
+                    horizontal: 'right',
+                  }}
+                  keepMounted
+                  transformOrigin={{
+                    vertical: 'top',
+                    horizontal: 'right',
+                  }}
+                  open={Boolean(anchorEl)}
+                  onClose={handleClose}
+                >
+                  <MenuItem onClick={handleClose}>Profile</MenuItem>
+                  <MenuItem onClick={handleClose}>New Blog</MenuItem>
+                </Menu>
+              </div>
+            )}
+          </Toolbar>
+        </AppBar>
+      </Box>
+    );
+  }
