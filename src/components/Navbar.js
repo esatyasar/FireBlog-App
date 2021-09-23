@@ -43,7 +43,7 @@ export default function Navbar() {
             >
             </IconButton>
             <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-              Rifat's Blog
+              Esat's Blog
             </Typography>
             <FormGroup>
           <FormControlLabel

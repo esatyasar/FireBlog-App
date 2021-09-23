@@ -11,6 +11,7 @@ import CardMedia from '@mui/material/CardMedia';
 import CardContent from '@mui/material/CardContent';
 import Avatar from '@mui/material/Avatar';
  import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+ 
 const useStyles = makeStyles((theme) => ({
   appBar: {
     backgroundColor: "#fff"
