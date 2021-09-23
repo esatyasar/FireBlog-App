@@ -11,6 +11,7 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import FormGroup from '@mui/material/FormGroup';
 import MenuItem from '@mui/material/MenuItem';
 import Menu from '@mui/material/Menu';
+import {NavLink} from "react-router-dom";
 
 
 
@@ -43,7 +44,8 @@ export default function Navbar() {
             >
             </IconButton>
             <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-              Esat's Blog
+              <NavLink to="/Dashboard" activeClassName="active">Esat's Blog</NavLink>
+              
             </Typography>
             <FormGroup>
           <FormControlLabel
@@ -85,7 +87,8 @@ export default function Navbar() {
                   onClose={handleClose}
                 >
                   <MenuItem onClick={handleClose}>Profile</MenuItem>
-                  <MenuItem onClick={handleClose}>New Blog</MenuItem>
+                  <MenuItem onClick={handleClose}>
+                    <NavLink to="/NewBlog" activeClassName = "active">New Blog</NavLink> </MenuItem>
                 </Menu>
               </div>
             )}

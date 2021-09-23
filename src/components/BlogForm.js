@@ -5,7 +5,7 @@ import CssBaseline from "@mui/material/CssBaseline";
 import TextField from "@mui/material/TextField";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
-import { makeStyles } from "@mui/material/styles";
+import { makeStyles } from "@mui/styles";
 import Container from "@mui/material/Container";
 import blogPng from "../assets/blok.png";
 
