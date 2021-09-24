@@ -36,7 +36,9 @@ const useStyles = makeStyles((theme) => ({
     }
   },
   blogsContainer: {
-    paddingTop: theme.spacing(3)
+    paddingTop: theme.spacing(3),
+    display:"inline-block",
+    
   },
   blogTitle: {
     fontWeight: 800,
@@ -44,6 +46,7 @@ const useStyles = makeStyles((theme) => ({
   },
   card: {
     maxWidth: "100%",
+    
   },
   media: {
     height: 240
@@ -59,21 +62,21 @@ const useStyles = makeStyles((theme) => ({
 }));
 function BlogCard() {
 
-  const data = useContext(BlogContext)
+  const {data} = useContext(BlogContext)
 
   const classes = useStyles();
 
   console.log(data)
   return (
     <div className="App">
-      <Container maxWidth="lg" className={classes.blogsContainer}>
-        <Typography variant="h4" className={classes.blogTitle}>
+      <Typography variant="h4" className={classes.blogTitle}>
             <h1>──── DASHBOARD ──── </h1>
-        </Typography>
-        <NavLink to="/Details" activeClassName="active">
-            {data.map((blog) => {
-              return (
-              <Grid key={blog.id} container spacing={3}>
+      </Typography>
+      <Container maxWidth="lg" className={classes.blogsContainer}>
+        {data.map((blog) => {
+          return (
+            <NavLink to="/Details" activeClassName="active" >
+              <Grid key={blog.id} container justify="center" spacing={3}>
                 <Grid item xs={12} sm={6} md={4}>
                   <Card className={classes.card}>
                     <CardActionArea>
@@ -110,8 +113,9 @@ function BlogCard() {
                   </Card>
                 </Grid>
               </Grid>
-            )})}
-        </NavLink>
+            </NavLink>
+          )})}
+        
       </Container>
     </div>
   );
