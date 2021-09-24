@@ -55,7 +55,14 @@ export default function Navbar() {
                 aria-label="login switch"
               />
             }
-            label={auth ? 'Logout' : 'Login'}
+            label={auth ? 'Logout' : 
+            (<div >
+              <NavLink to="/Login" activeClassName = "active" style={{textDecoration:"none", color:"white"}}>
+                <span>Login   </span> 
+              </NavLink>
+              <NavLink to="/Register" activeClassName = "active" style={{textDecoration:"none", color:"white"}}>
+                <span>   Register</span> 
+              </NavLink></div>)}
           />
         </FormGroup>
             {auth && (
