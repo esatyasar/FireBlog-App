@@ -5,11 +5,20 @@ export const BlogContext = createContext()
 
 function BlogProvider({children}) {
 
+    const [counter,setCounter] = useState(1)
+    const [NewBlog,setNewBlog] = useState({id:counter, title:"", image :"", content:""});
+    const initialData = [{id : 1,
+                          title:"React Context",
+                          image: "https://picsum.photos/id/217/300/300",
+                          content: "lorem ipsum guy hukil asdilom asdiom"},
+                          { id: 2,
+                            title:"React Redux",
+                            image: "https://picsum.photos/id/89/300/300",
+                            content: "lorem ipsum guy hukil asdilom asdiom asdasd oasodijuybads"}]
 
-    const [NewBlog,setNewBlog] = useState({title:"", image :"", content:""});
-    const [dashboard,setDashboard] = useState([])
-    const values = {NewBlog, setNewBlog, dashboard, setDashboard}
-    console.log(NewBlog)
+    const [data,setData] = useState(initialData)
+    
+    const values = {NewBlog, setNewBlog, data, setData,counter, setCounter}
 
     return (
         <BlogContext.Provider value = {values}>

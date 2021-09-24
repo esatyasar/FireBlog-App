@@ -50,17 +50,17 @@ const useStyles = makeStyles((theme) => ({
 export default function BlogForm() {
   
   const classes = useStyles();
-  const {NewBlog, setNewBlog, dashboard, setDashboard} = useContext(BlogContext)
+  const {NewBlog, setNewBlog, data, setData,counter,setCounter} = useContext(BlogContext)
   
 
   const newBlogHandler = (e) =>{
     e.preventDefault();
-    setDashboard([...dashboard, NewBlog])
+    setCounter(counter+1)
+  
+    setData([...data, NewBlog.id = counter])
+    setData([...data, NewBlog])
   }
-
- 
-
-  console.log(dashboard)
+  
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
