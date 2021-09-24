@@ -8,6 +8,8 @@ import Typography from "@mui/material/Typography";
 import { makeStyles } from "@mui/styles";
 import Container from "@mui/material/Container";
 import blogPng from "../assets/blok.png";
+import { BlogContext } from "../contexts/BlogContext"
+import { useContext } from "react";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -43,9 +45,22 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function BlogForm({ newBlog, setNewBlog, newBlogHandler }) {
-  const classes = useStyles();
 
+
+export default function BlogForm() {
+  
+  const classes = useStyles();
+  const {NewBlog, setNewBlog, dashboard, setDashboard} = useContext(BlogContext)
+  
+
+  const newBlogHandler = (e) =>{
+    e.preventDefault();
+    setDashboard([...dashboard, NewBlog])
+  }
+
+ 
+
+  console.log(dashboard)
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
@@ -66,10 +81,10 @@ export default function BlogForm({ newBlog, setNewBlog, newBlogHandler }) {
                 id="title"
                 label="Title"
                 name="title"
-                // value={newBlog.title}
+                value={NewBlog.title}
                 autoFocus
                 onChange={(e) =>
-                  setNewBlog({ ...newBlog, title: e.target.value })
+                  setNewBlog({ ...NewBlog, title: e.target.value })
                 }
               />
             </Grid>
@@ -82,9 +97,9 @@ export default function BlogForm({ newBlog, setNewBlog, newBlogHandler }) {
                 label="Image URL"
                 type="text"
                 id="image"
-                // value={newBlog.image}
+                value={NewBlog.image}
                 onChange={(e) =>
-                  setNewBlog({ ...newBlog, image: e.target.value })
+                  setNewBlog({ ...NewBlog, image: e.target.value })
                 }
               />
             </Grid>
@@ -94,11 +109,11 @@ export default function BlogForm({ newBlog, setNewBlog, newBlogHandler }) {
                 required
                 label="Content"
                 multiline
-                // value={newBlog.content}
+                value={NewBlog.content}
                 fullWidth
                 rows={15}
                 onChange={(e) =>
-                  setNewBlog({ ...newBlog, content: e.target.value })
+                  setNewBlog({ ...NewBlog, content: e.target.value })
                 }
                 // defaultValue="Default Value"
                 variant="outlined"
