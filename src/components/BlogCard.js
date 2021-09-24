@@ -71,7 +71,7 @@ function BlogCard() {
             <h1>──── DASHBOARD ──── </h1>
         </Typography>
         <NavLink to="/Details" activeClassName="active">
-            {data.map((blog) =>{
+            {data.map((blog) => {
               return (
               <Grid key={blog.id} container spacing={3}>
                 <Grid item xs={12} sm={6} md={4}>
@@ -109,7 +109,7 @@ function BlogCard() {
                     </CardActions>
                   </Card>
                 </Grid>
-          </Grid>
+              </Grid>
             )})}
         </NavLink>
       </Container>
