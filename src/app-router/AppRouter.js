@@ -6,7 +6,7 @@ import Dashboard from "../pages/Dashboard"
 // import Details from "../pages/Details"
 // import Login from "../pages/Login"
 import NewBlog from "../pages/NewBlog"
-// import Profile from "../pages/Profile"
+import Profile from "../pages/Profile"
 // import Register from "../pages/Register"
 // import UpdateBlog from "../pages/UpdateBlog"
 
@@ -21,9 +21,9 @@ function AppRouter(){
                  {/* <Route path="/" exact component={Details} />
                  <Route path="/" exact component={Login} /> */}
                  <Route path="/NewBlog" exact  component={NewBlog} />
-                {/*  <Route path="/" exact component={Profile} />
-                 <Route path="/" exact component={Register} />
-                 <Route path="/" exact component={UpdateBlog} />  */}
+                 <Route path="/Profile" exact component={Profile} />
+                 {/* <Route path="/" exact component={Register} />
+                 <Route path="/" exact component={UpdateBlog} />  */} 
                 
             </Switch>
         </BrowserRouter>

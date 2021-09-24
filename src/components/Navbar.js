@@ -43,7 +43,7 @@ export default function Navbar() {
             >
             </IconButton>
             <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-              <NavLink to="/Dashboard" activeClassName="active">Esat's Blog</NavLink>
+              <NavLink to="/Dashboard" activeClassName="active" style={{textDecoration:"none", color:"white"}}>Esat's Blog</NavLink>
               
             </Typography>
             <FormGroup>
@@ -85,9 +85,13 @@ export default function Navbar() {
                   open={Boolean(anchorEl)}
                   onClose={handleClose}
                 >
-                  <MenuItem onClick={handleClose}>Profile</MenuItem>
-                  <MenuItem onClick={handleClose}>
-                    <NavLink to="/NewBlog" activeClassName = "active">New Blog</NavLink> </MenuItem>
+                  <MenuItem onClick={handleClose} >
+                  <NavLink to="/Profile" activeClassName = "active" style={{textDecoration:"none"}}>Profile</NavLink>
+                  </MenuItem>
+
+                  <MenuItem onClick={handleClose} >
+                    <NavLink to="/NewBlog" activeClassName = "active" style={{textDecoration:"none"}}>New Blog</NavLink> 
+                  </MenuItem>
                 </Menu>
               </div>
             )}
