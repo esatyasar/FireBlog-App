@@ -15,8 +15,8 @@ import {NavLink} from "react-router-dom";
 
 
 export default function Navbar() {
-    const [auth, setAuth] = React.useState(true);
-    const [anchorEl, setAnchorEl] = React.useState(null);
+    const [auth, setAuth] = useState(true);
+    const [anchorEl, setAnchorEl] = useState(null);
   
     const handleChange = (event) => {
       setAuth(event.target.checked);
