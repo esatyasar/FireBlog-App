@@ -10,6 +10,7 @@ import Container from "@mui/material/Container";
 import blogPng from "../assets/blok.png";
 import { BlogContext } from "../contexts/BlogContext"
 import { useContext } from "react";
+import { NavLink } from "react-router-dom"
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -53,8 +54,7 @@ export default function BlogForm() {
   const {NewBlog, setNewBlog, data, setData,counter,setCounter} = useContext(BlogContext)
   
 
-  const newBlogHandler = (e) =>{
-    e.preventDefault();
+  const newBlogHandler = () =>{
     setCounter(counter+1)
   
     setData([...data, NewBlog.id = counter])
@@ -120,15 +120,17 @@ export default function BlogForm() {
               />
             </Grid>
           </Grid>
-          <Button
-            type="submit"
-            fullWidth
-            variant="contained"
-            className={classes.submit}
-            onClick={newBlogHandler}
-          >
-            Submit
-          </Button>
+          <NavLink to="/Dashboard" activeClassName="active">
+            <Button
+              type="submit"
+              fullWidth
+              variant="contained"
+              className={classes.submit}
+              onClick={newBlogHandler}
+            >
+              Submit
+            </Button>
+          </NavLink>
         </form>
       </div>
     </Container>
