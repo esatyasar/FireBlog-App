@@ -84,7 +84,7 @@ function BlogCard() {
   }, []);
 
 
-  const {data} = useContext(BlogContext)
+  const {data,getDetails} = useContext(BlogContext)
 
   const classes = useStyles();
 
@@ -98,7 +98,7 @@ function BlogCard() {
         {data.map((blog) => {
           return (
             <NavLink to="/Details" activeClassName="active" >
-              <Grid key={blog.id} container justify="center" spacing={3}>
+              <Grid key={blog.id} container justify="center" spacing={3} onClick={()=>getDetails(blog.id)}>
                 <Grid item xs={12} sm={6} md={4}>
                   <Card className={classes.card}>
                     <CardActionArea>
