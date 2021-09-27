@@ -8,6 +8,7 @@ import Typography from '@mui/material/Typography';
 import { makeStyles } from '@mui/styles';
 import {useContext} from "react"
 import {BlogContext} from "../contexts/BlogContext";
+import { NavLink } from "react-router-dom"
 
  
 const useStyles = makeStyles((theme) => ({
@@ -39,17 +40,23 @@ const useStyles = makeStyles((theme) => ({
     actions:{
         display: "flex",
         justifyContent: "space-around"
+    },
+    btnDelete:{
+        textDecoration:"none"
+    },
+    btnUpdate:{
+        textDecoration:"none"
+
     }
+    
 
 }));
 
 export default function Details() {
 
-    const {details} = useContext(BlogContext)
+    const {details, deleteCard, updateBlog} = useContext(BlogContext)
 
     const classes = useStyles();
-
-    console.log(details)
 
   return (
     <div className ={classes.cardContainer}>
@@ -72,8 +79,14 @@ export default function Details() {
             </Typography>
         </CardContent>
         <CardActions className={classes.actions}>
-            <Button size="small">Update</Button>
-            <Button size="small">Delete</Button>
+            <NavLink to="/UpdateBlog" activeClassName="active" className={classes.btnUpdate}>
+                <Button size="small" onClick ={() => updateBlog(details.id)}>Update</Button>
+            </NavLink>
+            <NavLink to="/Dashboard" activeClassName="active" className={classes.btnDelete}>
+                <Button   size="small" onClick ={() => deleteCard(details.id)}>
+                    Delete
+                </Button>
+            </NavLink>
         </CardActions>
         </Card>
     </div>

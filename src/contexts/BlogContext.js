@@ -18,6 +18,7 @@ function BlogProvider({children}) {
 
     const [data,setData] = useState(initialData)
     const [details,setDetails] = useState({})
+    const [update, setUpdate] = useState({})
     
     const getDetails = (id) =>{
         const filtered = data.filter((item) =>{
@@ -26,8 +27,31 @@ function BlogProvider({children}) {
             };
         })
     }
+
+    const deleteCard = (id) => {
+        const deleted = data.filter((item) =>{
+            return item.id !== id
+        })
+        setData(deleted)
+    } 
+
+    const updateBlog = (id => {
+        const update = data.filter((item) => {
+            if (item.id === id) {
+                return setUpdate(item)
+            }
+        })
+    })
+    const updateHandler = (id) =>{
+      
+        const newUpdate = data.filter ((item) =>{
+            if (item.id === id){
+            return setNewBlog({...NewBlog, item})
+        }})
+        setData([...data, NewBlog])
+      }
     
-    const values = {NewBlog, setNewBlog, data, setData,counter, setCounter, getDetails,details, setDetails}
+    const values = {NewBlog, setNewBlog, data, setData,counter, setCounter, getDetails, details, setDetails, deleteCard, updateBlog, update, setUpdate, updateHandler}
 
     return (
         <BlogContext.Provider value = {values}>

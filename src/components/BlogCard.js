@@ -88,7 +88,7 @@ function BlogCard() {
 
   const classes = useStyles();
 
-  console.log(data)
+  
   return (
     <div className="App">
       <Typography variant="h4" className={classes.blogTitle}>
