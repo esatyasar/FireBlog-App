@@ -44,6 +44,7 @@ const useStyles = makeStyles((theme) => ({
     
   },
   blogTitle: {
+    marginTop:"2rem",
     fontWeight: 800,
     paddingBottom: theme.spacing(3)
   },
