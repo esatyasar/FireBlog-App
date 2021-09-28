@@ -112,7 +112,7 @@ function BlogCard() {
                           {blog.title}
                         </Typography>
                         <Typography variant="body2" color="textSecondary" component="p">
-                           {blog.content}
+                           {blog.content.slice(0,30)+"..."}
                         </Typography>
                       </CardContent>
                     </CardActionArea>
