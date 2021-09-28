@@ -101,7 +101,7 @@ export default function BlogForm() {
                 required
                 label="Content"
                 multiline
-                value={update.content.slice(0,30)}
+                value={update.content}
                 fullWidth
                 rows={15}
                 variant="outlined"

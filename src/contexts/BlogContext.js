@@ -44,11 +44,15 @@ function BlogProvider({children}) {
     })
     const updateHandler = (id) =>{
       
-        const newUpdate = data.filter ((item) =>{
+        const newUpdate = [...data].filter((item) =>{
             if (item.id === id){
-            return setNewBlog({...NewBlog, item})
-        }})
-        setData([...data, NewBlog])
+                item.title = update.title
+                item.image = update.image
+                item.content = update.content
+            }
+            return data;
+        })
+        setData(newUpdate)
       }
     
     const values = {NewBlog, setNewBlog, data, setData,counter, setCounter, getDetails, details, setDetails, deleteCard, updateBlog, update, setUpdate, updateHandler}
