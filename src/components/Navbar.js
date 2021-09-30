@@ -1,12 +1,11 @@
 import React, {useState} from "react";
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
 import AccountCircle from '@mui/icons-material/AccountCircle';
-import Switch from '@mui/material/Switch';
-import FormControlLabel from '@mui/material/FormControlLabel';
 import FormGroup from '@mui/material/FormGroup';
 import MenuItem from '@mui/material/MenuItem';
 import Menu from '@mui/material/Menu';
@@ -14,12 +13,15 @@ import {NavLink} from "react-router-dom";
 
 
 
+
 export default function Navbar() {
+
+   
     const [auth, setAuth] = useState(true);
     const [anchorEl, setAnchorEl] = useState(null);
   
-    const handleChange = (event) => {
-      setAuth(event.target.checked);
+    const handleChange = () => {
+      setAuth(!auth);
     };
   
     const handleMenu = (event) => {
@@ -44,29 +46,12 @@ export default function Navbar() {
             </IconButton>
             <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
               <NavLink to="/Dashboard" activeClassName="active" style={{textDecoration:"none", color:"white"}}>Esat's Blog</NavLink>
-              
             </Typography>
             <FormGroup>
-          <FormControlLabel
-            control={
-              <Switch
-                checked={auth}
-                onChange={handleChange}
-                aria-label="login switch"
-              />
-            }
-            label={auth ? 'Logout' : 
-            (<div >
+            {auth ? <div>
               <NavLink to="/Login" activeClassName = "active" style={{textDecoration:"none", color:"white"}}>
-                <span>Login   </span> 
+                <span onClick={handleChange}>Log Out</span> 
               </NavLink>
-              <NavLink to="/Register" activeClassName = "active" style={{textDecoration:"none", color:"white"}}>
-                <span>   Register</span> 
-              </NavLink></div>)}
-          />
-        </FormGroup>
-            {auth && (
-              <div>
                 <IconButton
                   size="large"
                   aria-label="account of current user"
@@ -100,8 +85,15 @@ export default function Navbar() {
                     <NavLink to="/NewBlog" activeClassName = "active" style={{textDecoration:"none"}}>New Blog</NavLink> 
                   </MenuItem>
                 </Menu>
-              </div>
-            )}
+              </div> : 
+            (<div >
+              <NavLink to="/Login" activeClassName = "active" style={{textDecoration:"none", color:"white"}}>
+                <span>Login   </span> 
+              </NavLink>
+              <NavLink to="/Register" activeClassName = "active" style={{textDecoration:"none", color:"white"}}>
+                <span>   Register</span> 
+              </NavLink></div>)}
+          </FormGroup>
           </Toolbar>
         </AppBar>
       </Box>
