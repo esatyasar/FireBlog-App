@@ -8,6 +8,7 @@ import Profile from "../pages/Profile"
 import Register from "../pages/Register"
 import UpdateBlog from "../pages/UpdateBlog"
 import AuthProvider from '../contexts/AuthContext'
+import PrivateRouter from './PrivateRouter'
 
 function AppRouter(){
     return (
@@ -15,13 +16,13 @@ function AppRouter(){
             <Navbar />
             <AuthProvider>
                 <Switch>
-                    <Route path="/Dashboard" exact component={Dashboard} />
-                    <Route path="/Details" exact component={Details} />
+                    <PrivateRouter path="/Dashboard" exact component={Dashboard} />
+                    <PrivateRouter path="/Details" exact component={Details} />
                     <Route path="/Login" exact component={Login} />
-                    <Route path="/NewBlog" exact  component={NewBlog} />
-                    <Route path="/Profile" exact component={Profile} />
+                    <PrivateRouter path="/NewBlog" exact  component={NewBlog} />
+                    <PrivateRouter path="/Profile" exact component={Profile} />
                     <Route path="/Register" exact component={Register} />
-                    <Route path="/UpdateBlog" exact component={UpdateBlog} />
+                    <PrivateRouter path="/UpdateBlog" exact component={UpdateBlog} />
                 </Switch>
             </AuthProvider>
         </BrowserRouter>
