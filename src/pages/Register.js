@@ -13,18 +13,16 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { NavLink, useHistory } from 'react-router-dom';
-import {useRef,useState} from 'react';
+import {useState} from 'react';
 import {useAuth} from '../contexts/AuthContext'
-
-
 
 const theme = createTheme();
 
 export default function Register() {
 
-  const emailRef = useRef()
-  const passwordRef = useRef()
-  const passwordConfirmRef = useRef()
+  const [email, setEmail] = useState()
+  const [password, setPassword] = useState()
+  const [passwordConfirm, setPasswordConfirm] = useState()
   const { signup } = useAuth()
   const [error, setError] = useState("")
   const [loading, setLoading] = useState(false)
@@ -32,20 +30,21 @@ export default function Register() {
 
   async function handleSubmit(e) {
     e.preventDefault()
-
-    if (passwordRef.current.value !== passwordConfirmRef.current.value) {
+    console.log(email)
+    console.log(password)
+    console.log(passwordConfirm)
+    
+    if (password !== passwordConfirm) {
       return setError("Passwords do not match")
     }
-
     try {
       setError("")
       setLoading(true)
-      await signup(emailRef.current.value, passwordRef.current.value)
+      await signup(email, password)
       history.push("/Dashboard")
     } catch {
       setError("Failed to create an account")
     }
-
     setLoading(false)
   }
 
@@ -87,38 +86,35 @@ export default function Register() {
             <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 1 }}>
               <TextField
                 margin="normal"
-                required
                 fullWidth
                 id="email"
                 label="Email Address"
                 name="email"
                 autoComplete="email"
                 autoFocus
-                ref = {emailRef}
+                onChange= {(e) => setEmail(e.target.value) }
                 required
               />
               <TextField
                 margin="normal"
-                required
                 fullWidth
                 name="password"
                 label="Password"
                 type="password"
                 id="password"
                 autoComplete="current-password"
-                ref = {passwordRef}
+                onChange= {(e) => setPassword(e.target.value) }
                 required
               />
               <TextField
                 margin="normal"
-                required
                 fullWidth
                 name="password-confirm"
                 label="Password Confirmation"
                 type="password"
                 id="password-confirm"
                 autoComplete="current-password"
-                ref={passwordConfirmRef}
+                onChange= {(e) => setPasswordConfirm(e.target.value) }
                 required
               />
               <FormControlLabel

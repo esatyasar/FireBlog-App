@@ -7,19 +7,22 @@ import TextField from '@mui/material/TextField';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
 import Box from '@mui/material/Box';
+import Alert from '@mui/material/Alert'
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import {NavLink, useHistory} from 'react-router-dom';
-import { useAuth } from "../contexts/AuthContext"
+import {useHistory} from 'react-router-dom';
+import { useAuth } from "../contexts/AuthContext";
+import {useState} from 'react';
+import {NavLink} from "react-router-dom";
 
 const theme = createTheme();
 
 export default function Login() {
 
-  const emailRef = useRef()
-  const passwordRef = useRef()
+  const [email, setEmail] = useState()
+  const [password, setPassword] = useState()
   const { login } = useAuth()
   const [error, setError] = useState("")
   const [loading, setLoading] = useState(false)
@@ -31,7 +34,7 @@ export default function Login() {
     try {
       setError("")
       setLoading(true)
-      await login(emailRef.current.value, passwordRef.current.value)
+      await login(email, password)
       history.push("/Dashboard")
     } catch {
       setError("Failed to log in")
@@ -58,7 +61,7 @@ export default function Login() {
           <Typography component="h1" variant="h5">
             Log in
           </Typography>
-          {error && <Alert variant="danger">{error}</Alert>}
+          {error && <Alert severity="error">{error}</Alert>}
           <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
           <TextField
                 margin="normal"
@@ -69,7 +72,7 @@ export default function Login() {
                 name="email"
                 autoComplete="email"
                 autoFocus
-                ref = {emailRef}
+                onChange= {(e) => setEmail(e.target.value) }
                 required
               />
               <TextField
@@ -81,7 +84,7 @@ export default function Login() {
                 type="password"
                 id="password"
                 autoComplete="current-password"
-                ref = {passwordRef}
+                onChange= {(e) => setPassword(e.target.value) }
                 required
               />
             <FormControlLabel
@@ -99,8 +102,8 @@ export default function Login() {
             </Button>
            </Box>
            <div className="w-100 text-center mt-2">
-              Need an account? <Navlink to ="/Register">Register</Navlink>
-            </div>
+              Need an account? <NavLink to ="/Register">Register</NavLink>
+           </div>
         </Box>
       </Container>
     </ThemeProvider>
