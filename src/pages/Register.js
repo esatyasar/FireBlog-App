@@ -11,11 +11,18 @@ import Grid from '@mui/material/Grid';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { NavLink } from 'react-router-dom';
+import {useRef} from 'react';
 
 
 const theme = createTheme();
 
 export default function Register() {
+
+  const emailRef = useRef()
+  const passwordRef = useRef()
+  const passwordConfirmRef = useRef()
+
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -70,6 +77,8 @@ export default function Register() {
                 name="email"
                 autoComplete="email"
                 autoFocus
+                ref = {emailRef}
+                required
               />
               <TextField
                 margin="normal"
@@ -80,6 +89,20 @@ export default function Register() {
                 type="password"
                 id="password"
                 autoComplete="current-password"
+                ref = {passwordRef}
+                required
+              />
+              <TextField
+                margin="normal"
+                required
+                fullWidth
+                name="password-confirm"
+                label="Password Confirmation"
+                type="password"
+                id="password-confirm"
+                autoComplete="current-password"
+                ref={passwordConfirmRef}
+                required
               />
               <FormControlLabel
                 control={<Checkbox value="remember" color="primary" />}
@@ -94,6 +117,9 @@ export default function Register() {
                 Sign up
               </Button>
             </Box>
+            <div className="w-100 text-center mt-2">
+              Already have an account? <NavLink to="/Login">Log In</NavLink>
+            </div>  
           </Box>
         </Grid>
       </Grid>
