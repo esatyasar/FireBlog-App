@@ -8,11 +8,14 @@ import Checkbox from '@mui/material/Checkbox';
 import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
+import Alert from '@mui/material/Alert';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { NavLink } from 'react-router-dom';
-import {useRef} from 'react';
+import { NavLink, useHistory } from 'react-router-dom';
+import {useRef,useState} from 'react';
+import {useAuth} from '../contexts/AuthContext'
+
 
 
 const theme = createTheme();
@@ -22,16 +25,29 @@ export default function Register() {
   const emailRef = useRef()
   const passwordRef = useRef()
   const passwordConfirmRef = useRef()
+  const { signup } = useAuth()
+  const [error, setError] = useState("")
+  const [loading, setLoading] = useState(false)
+  const history = useHistory()
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    // eslint-disable-next-line no-console
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-    });
-  };
+  async function handleSubmit(e) {
+    e.preventDefault()
+
+    if (passwordRef.current.value !== passwordConfirmRef.current.value) {
+      return setError("Passwords do not match")
+    }
+
+    try {
+      setError("")
+      setLoading(true)
+      await signup(emailRef.current.value, passwordRef.current.value)
+      history.push("/Dashboard")
+    } catch {
+      setError("Failed to create an account")
+    }
+
+    setLoading(false)
+  }
 
   return (
     <ThemeProvider theme={theme}>
@@ -67,6 +83,7 @@ export default function Register() {
             <Typography component="h1" variant="h5">
               Sign up
             </Typography>
+            {error && <Alert severity="error">{error}</Alert>}
             <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 1 }}>
               <TextField
                 margin="normal"
@@ -113,6 +130,7 @@ export default function Register() {
                 fullWidth
                 variant="contained"
                 sx={{ mt: 3, mb: 2 }}
+                disabled ={loading}
               >
                 Sign up
               </Button>
