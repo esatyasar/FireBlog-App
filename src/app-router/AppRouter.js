@@ -6,6 +6,7 @@ import Login from "../pages/Login"
 import NewBlog from "../pages/NewBlog"
 import Profile from "../pages/Profile"
 import Register from "../pages/Register"
+import ForgotPassword from "../pages/ForgotPassword"
 import UpdateBlog from "../pages/UpdateBlog"
 import AuthProvider from '../contexts/AuthContext'
 import PrivateRouter from './PrivateRouter'
@@ -19,6 +20,7 @@ function AppRouter(){
                     <PrivateRouter path="/Dashboard" exact component={Dashboard} />
                     <PrivateRouter path="/Details" exact component={Details} />
                     <Route path="/Login" exact component={Login} />
+                    <Route path="/ForgotPassword" exact component={ForgotPassword} />
                     <PrivateRouter path="/NewBlog" exact  component={NewBlog} />
                     <PrivateRouter path="/Profile" exact component={Profile} />
                     <Route path="/Register" exact component={Register} />
