@@ -27,9 +27,9 @@ export default function Profile() {
         </CardContent>
       </CardActionArea>
       <CardActions>
-        <Button size="small" color="primary">
-          mail to : {currentUser.email}
-        </Button>
+        <Typography size="small" color="primary" style = {{marginLeft:"0.5rem"}}>
+          User: {currentUser.email}
+        </Typography>
       </CardActions>
     </Card>
   );

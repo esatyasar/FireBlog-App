@@ -30,9 +30,6 @@ export default function Register() {
 
   async function handleSubmit(e) {
     e.preventDefault()
-    console.log(email)
-    console.log(password)
-    console.log(passwordConfirm)
     
     if (password !== passwordConfirm) {
       return setError("Passwords do not match")
