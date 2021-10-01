@@ -40,8 +40,6 @@ const useStyles = makeStyles((theme) => ({
     display:"flex",
     justifyContent:"center",
     flexWrap: 'wrap'
-
-    
   },
   blogTitle: {
     marginTop:"2rem",

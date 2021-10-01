@@ -35,7 +35,6 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: "#04237F",
     color: "white",
     fontWeight: "bold",
-    textDecoration:"none",
     "&:hover": {
       color: "#fff",
     },
@@ -121,7 +120,7 @@ export default function BlogForm() {
               />
             </Grid>
           </Grid>
-          <NavLink to="/Dashboard" activeClassName="active">
+          <NavLink to="/Dashboard" activeClassName="active" style = {{textDecoration : "none"}}>
             <Button
               type="submit"
               fullWidth
