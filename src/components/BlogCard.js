@@ -55,9 +55,7 @@ const useStyles = makeStyles((theme) => ({
     marginRight : "25px",
     marginBottom : "25px",
     marginRight: theme.spacing(5),
-    marginLeft: theme.spacing(5)
-
-    
+    marginLeft: theme.spacing(5),
   },
   media: {
     height: 240
