@@ -49,7 +49,7 @@ const useStyles = makeStyles((theme) => ({
   },
   card: {
     width: "300px",
-    height: "400px",
+    maxHeight: "600px",
     marginRight : "25px",
     marginBottom : "25px",
     marginRight: theme.spacing(5),

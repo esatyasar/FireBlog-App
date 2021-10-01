@@ -5,7 +5,7 @@ export const BlogContext = createContext()
 
 function BlogProvider({children}) {
 
-    const [counter,setCounter] = useState(1)
+    const [counter,setCounter] = useState(3)
     const [NewBlog,setNewBlog] = useState({id:counter, title:"", image :"", content:""});
     const initialData = [{id : 1,
         title:"React Context",
@@ -53,7 +53,7 @@ function BlogProvider({children}) {
             }
             return data;
         })
-        setData(newUpdate)
+        setData([...data, newUpdate])
       }
 
       const handleChange = () => {
@@ -71,6 +71,7 @@ function BlogProvider({children}) {
         handleChange,valid
     }
 
+    console.log(data)
     return (
         <BlogContext.Provider value = {values}>
             {children}
