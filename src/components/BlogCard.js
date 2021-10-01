@@ -46,6 +46,7 @@ const useStyles = makeStyles((theme) => ({
   blogTitle: {
     marginTop:"2rem",
     fontWeight: 800,
+    color:"#04237F",
     paddingBottom: theme.spacing(3)
   },
   card: {
@@ -60,6 +61,9 @@ const useStyles = makeStyles((theme) => ({
   },
   media: {
     height: 240
+  },
+  itemTitle:{
+    color: "#04237F",
   },
   cardActions: {
     display: "flex",
@@ -109,7 +113,7 @@ function BlogCard() {
                         title="Contemplative Reptile"
                       />
                       <CardContent>
-                        <Typography gutterBottom variant="h5" component="h2">
+                        <Typography gutterBottom variant="h5" component="h2" className = {classes.itemTitle}>
                           {blog.title}
                         </Typography>
                         <Typography variant="body2" color="textSecondary" component="p">

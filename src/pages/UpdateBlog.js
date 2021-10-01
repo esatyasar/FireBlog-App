@@ -35,14 +35,15 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: "#04237F",
     color: "white",
     fontWeight: "bold",
+    textDecoration:"none",
     "&:hover": {
-      color: "#04237F",
+      color: "#fff",
     },
   },
   title: {
     fontSize: 35,
     fontFamily: "Girassol",
-    color: "#046582",
+    color: "#04237F",
   },
 }));
 
