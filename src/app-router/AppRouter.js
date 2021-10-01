@@ -17,14 +17,14 @@ function AppRouter(){
             <Navbar />
             <AuthProvider>
                 <Switch>
-                    <PrivateRouter path="/Dashboard" exact component={Dashboard} />
-                    <PrivateRouter path="/Details" exact component={Details} />
-                    <Route path="/Login" exact component={Login} />
-                    <Route path="/ForgotPassword" exact component={ForgotPassword} />
-                    <PrivateRouter path="/NewBlog" exact  component={NewBlog} />
-                    <PrivateRouter path="/Profile" exact component={Profile} />
-                    <Route path="/Register" exact component={Register} />
-                    <PrivateRouter path="/UpdateBlog" exact component={UpdateBlog} />
+                    <PrivateRouter path="/Dashboard" component={Dashboard} />
+                    <PrivateRouter path="/Details" component={Details} />
+                    <Route path="/Login" component={Login} />
+                    <Route path="/ForgotPassword" component={ForgotPassword} />
+                    <PrivateRouter path="/NewBlog" component={NewBlog} />
+                    <PrivateRouter path="/Profile" component={Profile} />
+                    <Route path="/Register" component={Register} />
+                    <PrivateRouter path="/UpdateBlog" component={UpdateBlog} />
                 </Switch>
             </AuthProvider>
         </BrowserRouter>

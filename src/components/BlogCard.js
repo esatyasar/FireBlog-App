@@ -98,7 +98,7 @@ function BlogCard() {
       <Container maxWidth="lg" className={classes.blogsContainer}>
         {data.map((blog) => {
           return (
-            <NavLink to="/Details" activeClassName="active" >
+            <NavLink to="/Details" activeClassName="active" style ={{textDecoration:"none"}} >
               <Grid key={blog.id} container justify="center" spacing={3} onClick={()=>getDetails(blog.id)}>
                 <Grid item xs={12} sm={6} md={4}>
                   <Card className={classes.card}>

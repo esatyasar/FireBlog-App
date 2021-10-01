@@ -1,7 +1,6 @@
-import React, {useState} from "react";
+import React, {useState,useContext} from "react";
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
@@ -10,20 +9,12 @@ import FormGroup from '@mui/material/FormGroup';
 import MenuItem from '@mui/material/MenuItem';
 import Menu from '@mui/material/Menu';
 import {NavLink} from "react-router-dom";
-
-
-
+import {BlogContext} from "../contexts/BlogContext"
 
 export default function Navbar() {
 
-   
-    const [auth, setAuth] = useState(true);
+    const {valid, handleChange} = useContext(BlogContext)
     const [anchorEl, setAnchorEl] = useState(null);
-  
-    const handleChange = () => {
-      setAuth(!auth);
-    };
-  
     const handleMenu = (event) => {
       setAnchorEl(event.currentTarget);
     };
@@ -48,10 +39,8 @@ export default function Navbar() {
               <NavLink to="/Dashboard" activeClassName="active" style={{textDecoration:"none", color:"white"}}>Esat's Blog</NavLink>
             </Typography>
             <FormGroup>
-            {auth ? <div>
-              <NavLink to="/Login" activeClassName = "active" style={{textDecoration:"none", color:"white"}}>
-                <span onClick={handleChange}>Log Out</span> 
-              </NavLink>
+            {valid ? <div>
+              
                 <IconButton
                   size="large"
                   aria-label="account of current user"
@@ -84,6 +73,11 @@ export default function Navbar() {
                   <MenuItem onClick={handleClose} >
                     <NavLink to="/NewBlog" activeClassName = "active" style={{textDecoration:"none"}}>New Blog</NavLink> 
                   </MenuItem>
+
+                  <MenuItem onClick={handleChange} >
+                    <NavLink to="/Login" activeClassName = "active" style={{textDecoration:"none"}}>Log Out</NavLink> 
+                  </MenuItem>
+
                 </Menu>
               </div> : 
             (<div >

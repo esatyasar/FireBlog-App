@@ -14,13 +14,15 @@ import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import {useHistory} from 'react-router-dom';
 import { useAuth } from "../contexts/AuthContext";
-import {useState} from 'react';
+import {useState, useContext} from 'react';
 import {NavLink} from "react-router-dom";
+import {BlogContext} from '../contexts/BlogContext'
 
 const theme = createTheme();
 
 export default function Login() {
 
+  const {handleChange} = useContext(BlogContext)
   const [email, setEmail] = useState()
   const [password, setPassword] = useState()
   const { login } = useAuth()
@@ -97,6 +99,7 @@ export default function Login() {
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
               disabled={loading} 
+              onClick = {handleChange}
             >
               Log In
             </Button>
