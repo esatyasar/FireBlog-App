@@ -58,6 +58,7 @@ export default function BlogForm() {
   
     setData([...data, NewBlog.id = counter])
     setData([...data, NewBlog])
+    setNewBlog({})
   }
   
   return (
