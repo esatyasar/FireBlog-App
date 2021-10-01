@@ -28,7 +28,7 @@ const useStyles = makeStyles((theme) => ({
   },
   form: {
     width: "100%", // Fix IE 11 issue.
-    marginTop: theme.spacing(3),
+    marginTop: theme.spacing(2),
   },
   submit: {
     margin: theme.spacing(3, 0, 2),
@@ -53,7 +53,6 @@ export default function BlogForm() {
   const classes = useStyles();
   const {NewBlog, setNewBlog, data, setData,counter,setCounter} = useContext(BlogContext)
   
-
   const newBlogHandler = () =>{
     setCounter(counter+1)
   
@@ -113,7 +112,7 @@ export default function BlogForm() {
                 fullWidth
                 rows={9}
                 onChange={(e) =>
-                  setNewBlog({ ...NewBlog, content: e.target.value })
+                  setNewBlog({ ...NewBlog, content: e.target.value})
                 }
                 // defaultValue="Default Value"
                 variant="outlined"

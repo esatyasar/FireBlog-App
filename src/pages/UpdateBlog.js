@@ -9,7 +9,7 @@ import { makeStyles } from "@mui/styles";
 import Container from "@mui/material/Container";
 import blogJpg from "../assets/blog3.jpg";
 import { BlogContext } from "../contexts/BlogContext"
-import { useContext } from "react";
+import { useContext} from "react";
 import { NavLink } from "react-router-dom"
 
 const useStyles = makeStyles((theme) => ({
@@ -46,13 +46,17 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-
-
 export default function BlogForm() {
   
   const classes = useStyles();
-  const {update, setUpdate, updateHandler} = useContext(BlogContext)
+  const {details, setDetails, data, setData} = useContext(BlogContext)
 
+  const detailsHandler = (id) =>{
+    setData(data.map((item ) => 
+       item.id === id ? {...item, title:details.title , image : details.image, content : details.content  } : item 
+    ))
+ }
+ 
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
@@ -73,10 +77,10 @@ export default function BlogForm() {
                 id="title"
                 label="Title"
                 name="title"
-                value={update.title}
+                value={details.title}
                 autoFocus
                 onChange={(e) =>
-                    setUpdate({ ...update, title: e.target.value })
+                    setDetails({ ...details, title: e.target.value })
                   }
               />
             </Grid>
@@ -89,9 +93,9 @@ export default function BlogForm() {
                 label="Image URL"
                 type="text"
                 id="image"
-                value={update.image}
+                value={details.image}
                 onChange={(e) =>
-                    setUpdate({ ...update, image: e.target.value })
+                    setDetails({ ...details, image: e.target.value })
                   }
               />
             </Grid>
@@ -101,12 +105,12 @@ export default function BlogForm() {
                 required
                 label="Content"
                 multiline
-                value={update.content}
+                value={details.content}
                 fullWidth
                 rows={9}
                 variant="outlined"
                 onChange={(e) =>
-                    setUpdate({ ...update, content: e.target.value })
+                    setDetails({ ...details, content: e.target.value })
                   }
               />
             </Grid>
@@ -117,7 +121,7 @@ export default function BlogForm() {
               fullWidth
               variant="contained"
               className={classes.submit}
-              onClick={() => updateHandler(update.id)}
+              onClick={() => detailsHandler(details.id)}
             >
               Update
             </Button>

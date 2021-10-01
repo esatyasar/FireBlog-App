@@ -43,20 +43,9 @@ function BlogProvider({children}) {
             }
         })
     })
-    const updateHandler = (id) =>{
-      
-        const newUpdate = [...data].filter((item) =>{
-            if (item.id === id){
-                item.title = update.title
-                item.image = update.image
-                item.content = update.content
-            }
-            return data;
-        })
-        setData([...data, newUpdate])
-      }
+    
 
-      const handleChange = () => {
+    const handleChange = () => {
         setValid(!valid);
       };
     
@@ -66,9 +55,7 @@ function BlogProvider({children}) {
         counter, setCounter, 
         getDetails, details, 
         setDetails, deleteCard, 
-        updateBlog, update, 
-        setUpdate, updateHandler,
-        handleChange,valid
+        updateBlog, handleChange,valid
     }
 
     console.log(data)

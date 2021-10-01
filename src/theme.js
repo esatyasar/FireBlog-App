@@ -7,7 +7,7 @@ const theme = createTheme({
         background : {
             default : "#fff" 
         },
-        spacing : 8
+        
     }
 })
 export default theme ;
