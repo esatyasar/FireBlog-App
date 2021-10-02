@@ -11,6 +11,8 @@ import blogJpg from "../assets/blog3.jpg";
 import { BlogContext } from "../contexts/BlogContext"
 import { useContext} from "react";
 import { NavLink } from "react-router-dom"
+import { toastSuccessNotify } from "../helpers/toastNotify"
+
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -53,8 +55,14 @@ export default function BlogForm() {
 
   const detailsHandler = (id) =>{
     setData(data.map((item ) => 
-       item.id === id ? {...item, title:details.title , image : details.image, content : details.content  } : item 
+       item.id === id ? {
+         ...item, 
+         title:details.title, 
+         image : details.image, 
+         content : details.content  
+        } : item 
     ))
+    toastSuccessNotify("Updated successfully!");
  }
  
   return (

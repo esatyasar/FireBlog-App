@@ -16,7 +16,8 @@ import {useHistory} from 'react-router-dom';
 import { useAuth } from "../contexts/AuthContext";
 import {useState, useContext} from 'react';
 import {NavLink} from "react-router-dom";
-import {BlogContext} from '../contexts/BlogContext'
+import {BlogContext} from '../contexts/BlogContext';
+import { toastSuccessNotify,toastErrorNotify } from "../helpers/toastNotify";
 
 const theme = createTheme();
 
@@ -38,8 +39,11 @@ export default function Login() {
       setLoading(true)
       await login(email, password)
       history.push("/Dashboard")
+      toastSuccessNotify("Logged in successfully!");
     } catch {
-      setError("Failed to log in")
+      /* setError("Failed to log in") */
+      
+      toastErrorNotify("Failed to log in");
     }
 
     setLoading(false)

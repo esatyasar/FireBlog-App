@@ -10,7 +10,8 @@ import Container from "@mui/material/Container";
 import blogJpg from "../assets/blog3.jpg";
 import { BlogContext } from "../contexts/BlogContext"
 import { useContext } from "react";
-import { NavLink } from "react-router-dom"
+import { NavLink } from "react-router-dom";
+import { toastSuccessNotify } from "../helpers/toastNotify";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -59,6 +60,7 @@ export default function BlogForm() {
     setData([...data, NewBlog.id = counter])
     setData([...data, NewBlog])
     setNewBlog({})
+    toastSuccessNotify("Blog added successfully!");
   }
   
   return (

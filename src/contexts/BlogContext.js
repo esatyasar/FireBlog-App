@@ -1,5 +1,7 @@
 import React from 'react'
 import { createContext, useState } from 'react';
+import { toastSuccessNotify } from "../helpers/toastNotify";
+
 
 export const BlogContext = createContext()
 
@@ -34,6 +36,7 @@ function BlogProvider({children}) {
             return item.id !== id
         })
         setData(deleted)
+        toastSuccessNotify("Deleted successfully!");
     } 
 
     const updateBlog = (id => {
