@@ -13,6 +13,7 @@ import Avatar from '@mui/material/Avatar';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import {NavLink} from "react-router-dom";
 import {BlogContext} from "../contexts/BlogContext";
+import ReactHtmlParser from 'react-html-parser';
  
 const useStyles = makeStyles((theme) => ({
   appBar: {
@@ -113,7 +114,7 @@ function BlogCard() {
                           {blog.title}
                         </Typography>
                         <Typography variant="body2" color="textSecondary" component="p">
-                           {blog.content.slice(0,30)+"..."}
+                           {ReactHtmlParser(blog.content.slice(0,30)+"...")}
                         </Typography>
                       </CardContent>
                     </CardActionArea>

@@ -12,6 +12,7 @@ import { BlogContext } from "../contexts/BlogContext"
 import { useContext} from "react";
 import { NavLink } from "react-router-dom"
 import { toastSuccessNotify } from "../helpers/toastNotify"
+import ReactHtmlParser from 'react-html-parser';
 
 
 const useStyles = makeStyles((theme) => ({
