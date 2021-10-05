@@ -2,7 +2,6 @@ import React from 'react'
 import { createContext, useState } from 'react';
 import { toastSuccessNotify } from "../helpers/toastNotify";
 
-
 export const BlogContext = createContext()
 
 function BlogProvider({children}) {
@@ -47,7 +46,6 @@ function BlogProvider({children}) {
         })
     })
     
-
     const handleChange = () => {
         setValid(!valid);
       };
@@ -68,5 +66,4 @@ function BlogProvider({children}) {
         </BlogContext.Provider>
     )
 }
-
 export default BlogProvider;

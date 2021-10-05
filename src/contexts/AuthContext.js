@@ -1,7 +1,6 @@
 import React, {useContext, useState, useEffect } from 'react';
 import { auth } from "../helpers/firebase"
 
-
 const AuthContext = React.createContext()
 
 export function useAuth (){
@@ -49,7 +48,5 @@ function AuthProvider( {children} ){
        </AuthContext.Provider>
     )
 }
-
-
 export default AuthProvider
 

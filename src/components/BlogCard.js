@@ -79,18 +79,13 @@ function BlogCard() {
     var date = new Date().getDate(); //Current Date
     var month = new Date().getMonth() + 1; //Current Month
     var year = new Date().getFullYear(); //Current Year
-
     setCurrentDate(
       date + '/' + month + '/' + year 
     );
   }, []);
 
-
   const {data,getDetails} = useContext(BlogContext)
-
   const classes = useStyles();
-
-  
   return (
     <div className="App">
       <Typography variant="h4" className={classes.blogTitle}>

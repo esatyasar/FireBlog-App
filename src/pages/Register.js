@@ -44,7 +44,6 @@ export default function Register() {
     }
     setLoading(false)
   }
-
   return (
     <ThemeProvider theme={theme}>
       <Grid container component="main" sx={{ height: '100vh' }}>

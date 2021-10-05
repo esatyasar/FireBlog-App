@@ -9,5 +9,4 @@ function NewBlog() {
         </div>
     )
 }
-
 export default NewBlog

@@ -50,8 +50,6 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-
-
 export default function BlogForm() {
   
   const classes = useStyles();
@@ -59,7 +57,6 @@ export default function BlogForm() {
   
   const newBlogHandler = () =>{
     setCounter(counter+1)
-  
     setData([...data, NewBlog.id = counter])
     setData([...data, NewBlog])
     setNewBlog({})

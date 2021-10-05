@@ -18,11 +18,9 @@ export default function Navbar() {
     const handleMenu = (event) => {
       setAnchorEl(event.currentTarget);
     };
-  
-    const handleClose = () => {
+      const handleClose = () => {
       setAnchorEl(null);
     };
-  
     return (
       <Box sx={{ flexGrow: 1 }}>
         <AppBar position="static">

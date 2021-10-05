@@ -1,6 +1,5 @@
 import BlogCard from '../components/BlogCard'
 
-
 const Dashboard =() => {
     return(
         <div>

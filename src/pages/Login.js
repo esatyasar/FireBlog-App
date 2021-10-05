@@ -42,13 +42,10 @@ export default function Login() {
       toastSuccessNotify("Logged in successfully!");
     } catch {
       /* setError("Failed to log in") */
-      
       toastErrorNotify("Failed to log in");
     }
-
     setLoading(false)
   }
-
   return (
     <ThemeProvider theme={theme}>
       <Container component="main" maxWidth="xs">

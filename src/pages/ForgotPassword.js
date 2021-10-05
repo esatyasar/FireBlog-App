@@ -24,10 +24,8 @@ export default function ForgotPassword() {
   const [error, setError] = useState("")
   const [loading, setLoading] = useState(false)
   const [message, setMessage] = useState("")
-
   async function handleSubmit(e) {
     e.preventDefault()
-
     try {
         setMessage("")
         setError("")
@@ -37,10 +35,8 @@ export default function ForgotPassword() {
     } catch {
         setError("Failed to reset password")
     }
-
     setLoading(false)
   }
-
   return (
     <ThemeProvider theme={theme}>
       <Container component="main" maxWidth="xs">

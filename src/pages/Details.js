@@ -10,7 +10,6 @@ import {useContext} from "react"
 import {BlogContext} from "../contexts/BlogContext";
 import { NavLink } from "react-router-dom"
 
- 
 const useStyles = makeStyles((theme) => ({
     cardContainer:{
         display:"flex",
@@ -59,9 +58,7 @@ const useStyles = makeStyles((theme) => ({
 export default function Details() {
 
     const {details, deleteCard, updateBlog} = useContext(BlogContext)
-
     const classes = useStyles();
-
   return (
     <div className ={classes.cardContainer}>
         <Typography variant="h4" className={classes.blogTitle}>

@@ -14,7 +14,6 @@ import { NavLink } from "react-router-dom"
 import { toastSuccessNotify } from "../helpers/toastNotify"
 import ReactHtmlParser from 'react-html-parser';
 
-
 const useStyles = makeStyles((theme) => ({
   paper: {
     marginTop: theme.spacing(4),
@@ -53,7 +52,6 @@ export default function BlogForm() {
   
   const classes = useStyles();
   const {details, setDetails, data, setData} = useContext(BlogContext)
-
   const detailsHandler = (id) =>{
     setData(data.map((item ) => 
        item.id === id ? {
@@ -64,8 +62,7 @@ export default function BlogForm() {
         } : item 
     ))
     toastSuccessNotify("Updated successfully!");
- }
- 
+  }
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
