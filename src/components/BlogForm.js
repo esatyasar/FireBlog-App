@@ -14,7 +14,7 @@ import { NavLink } from "react-router-dom";
 import { toastSuccessNotify } from "../helpers/toastNotify";
 import { CKEditor } from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
-import ReactHtmlParser from 'react-html-parser';
+
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -53,7 +53,7 @@ const useStyles = makeStyles((theme) => ({
 export default function BlogForm() {
   
   const classes = useStyles();
-  const {NewBlog, setNewBlog, data, setData,counter,setCounter} = useContext(BlogContext)
+  const {NewBlog, setNewBlog, data, setData, counter, setCounter, handleOnChangeContent} = useContext(BlogContext)
   
   const newBlogHandler = () =>{
     setCounter(counter+1)
@@ -62,11 +62,7 @@ export default function BlogForm() {
     setNewBlog({})
     toastSuccessNotify("Blog added successfully!");
   }
-  const handleOnChangeContent = (e,editor) => {
-    const contentEditor = editor.getData()
-    setNewBlog({...NewBlog, content: ReactHtmlParser(contentEditor)})
-    console.log(NewBlog)
-  }
+ 
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
@@ -112,7 +108,7 @@ export default function BlogForm() {
             <Grid item xs={12}>
                 <CKEditor
                 editor = {ClassicEditor}
-                onChange= {handleOnChangeContent}
+                onChange= {(e,editor) => {handleOnChangeContent(e,editor)}}
                 />
               {/* <TextField
                 id="outlined-multiline-static"

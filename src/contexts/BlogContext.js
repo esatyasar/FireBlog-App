@@ -1,6 +1,7 @@
 import React from 'react'
 import { createContext, useState } from 'react';
 import { toastSuccessNotify } from "../helpers/toastNotify";
+import ReactHtmlParser from 'react-html-parser';
 
 export const BlogContext = createContext()
 
@@ -29,7 +30,15 @@ function BlogProvider({children}) {
             };
         })
     }
-
+    
+    const handleOnChangeContent = (e,editor) => {
+        setNewBlog({...NewBlog, content: ReactHtmlParser(editor.getData())})
+      }
+      
+    const handleUpdateContent = (e,editor) => {
+        setDetails({...details, content: ReactHtmlParser(editor.getData())})
+      }
+      
     const deleteCard = (id) => {
         const deleted = data.filter((item) =>{
             return item.id !== id
@@ -56,7 +65,9 @@ function BlogProvider({children}) {
         counter, setCounter, 
         getDetails, details, 
         setDetails, deleteCard, 
-        updateBlog, handleChange,valid
+        updateBlog, handleChange,
+        valid, handleOnChangeContent,
+        handleUpdateContent
     }
 
     console.log(data)

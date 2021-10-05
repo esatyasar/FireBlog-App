@@ -12,7 +12,8 @@ import { BlogContext } from "../contexts/BlogContext"
 import { useContext} from "react";
 import { NavLink } from "react-router-dom"
 import { toastSuccessNotify } from "../helpers/toastNotify"
-import ReactHtmlParser from 'react-html-parser';
+import { CKEditor } from '@ckeditor/ckeditor5-react';
+import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -51,7 +52,7 @@ const useStyles = makeStyles((theme) => ({
 export default function BlogForm() {
   
   const classes = useStyles();
-  const {details, setDetails, data, setData} = useContext(BlogContext)
+  const {details, setDetails, data, setData, handleUpdateContent} = useContext(BlogContext)
   const detailsHandler = (id) =>{
     setData(data.map((item ) => 
        item.id === id ? {
@@ -106,19 +107,10 @@ export default function BlogForm() {
               />
             </Grid>
             <Grid item xs={12}>
-              <TextField
-                id="outlined-multiline-static"
-                required
-                label="Content"
-                multiline
-                value={details.content}
-                fullWidth
-                rows={9}
-                variant="outlined"
-                onChange={(e) =>
-                    setDetails({ ...details, content: e.target.value })
-                  }
-              />
+            <CKEditor
+                editor = {ClassicEditor}
+                onChange= {(e,editor) => {handleUpdateContent(e,editor)}}
+                />
             </Grid>
           </Grid>
           <NavLink to="/Dashboard" activeClassName="active" style = {{textDecoration : "none"}}>
