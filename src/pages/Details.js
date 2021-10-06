@@ -8,7 +8,8 @@ import Typography from '@mui/material/Typography';
 import { makeStyles } from '@mui/styles';
 import {useContext} from "react"
 import {BlogContext} from "../contexts/BlogContext";
-import { NavLink } from "react-router-dom"
+import { NavLink } from "react-router-dom";
+import ReactHtmlParser from 'react-html-parser';
 
 const useStyles = makeStyles((theme) => ({
     cardContainer:{
@@ -76,7 +77,7 @@ export default function Details() {
             {details.title}
             </Typography>
             <Typography variant="body2" color="text.secondary">
-            {details.content}
+            {ReactHtmlParser(details.content)}
             </Typography>
         </CardContent>
         <CardActions className={classes.actions}>

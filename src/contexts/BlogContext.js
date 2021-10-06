@@ -32,11 +32,11 @@ function BlogProvider({children}) {
     }
     
     const handleOnChangeContent = (e,editor) => {
-        setNewBlog({...NewBlog, content: ReactHtmlParser(editor.getData())})
+        setNewBlog({...NewBlog, content: editor.getData()})
       }
       
     const handleUpdateContent = (e,editor) => {
-        setDetails({...details, content: ReactHtmlParser(editor.getData())})
+        setDetails({...details, content: editor.getData()})
       }
       
     const deleteCard = (id) => {

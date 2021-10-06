@@ -110,6 +110,7 @@ function BlogCard() {
                         </Typography>
                         <Typography variant="body2" color="textSecondary" component="p">
                            {ReactHtmlParser(blog.content.slice(0,30)+"...")}
+                           {console.log("blog", blog.content)}
                         </Typography>
                       </CardContent>
                     </CardActionArea>

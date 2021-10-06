@@ -57,7 +57,7 @@ export default function BlogForm() {
     setData(data.map((item ) => 
        item.id === id ? {
          ...item, 
-         title:details.title, 
+         title: details.title, 
          image : details.image, 
          content : details.content  
         } : item 
@@ -107,7 +107,9 @@ export default function BlogForm() {
               />
             </Grid>
             <Grid item xs={12}>
-            <CKEditor
+            <CKEditor 
+                value = {details.content}
+                name = "content"
                 editor = {ClassicEditor}
                 onChange= {(e,editor) => {handleUpdateContent(e,editor)}}
                 />
